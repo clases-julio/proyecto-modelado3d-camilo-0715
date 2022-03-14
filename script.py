@@ -116,8 +116,8 @@ if __name__ == "__main__":
     
     borrarObjetos()
     Objeto.crearCubo('Cuepro')
-    Seleccionado.mover((0, 0, 1))
-    Seleccionado.escalar((1.5, 1.5, 2))
+    Seleccionado.mover((0, 0, 0.9))
+    Seleccionado.escalar((1.5, 1.5, 1.6))
     
     Objeto.crearCylinder('Rueda_izq_interior')   
     Seleccionado.rotarX(PI / 2)
@@ -148,5 +148,14 @@ if __name__ == "__main__":
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, -0.65, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
+    
+    
+    Objeto.crearCubo('Cintura')
+    Seleccionado.mover((0, 0, 1.4))
+    Seleccionado.escalar((1, 1, 0.5))
+    
+    Objeto.crearCubo('Torax')
+    Seleccionado.mover((0, 0, 1.7))
+    Seleccionado.escalar((1.5, 1.9, 1))
     
 
