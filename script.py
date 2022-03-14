@@ -1,5 +1,7 @@
 import bpy
 
+PI = 3.1415
+
 '''*********************************************************************'''
 '''Funciones comunes útiles para selección/activación/borrado de objetos'''
 '''*********************************************************************'''
@@ -83,6 +85,10 @@ class Objeto:
     def crearCono(objName):
         bpy.ops.mesh.primitive_cone_add(radius1=0.5, location=(0, 0, 0))
         Activo.renombrar(objName)
+        
+    def crearCylinder(objName):
+        bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=2, enter_editmode=False, location=(0, 0, 0))
+        Activo.renombrar(objName)
 
 '''************'''
 ''' M  A  I  N '''
@@ -112,4 +118,35 @@ if __name__ == "__main__":
     Objeto.crearCubo('Cuepro')
     Seleccionado.mover((0, 0, 1))
     Seleccionado.escalar((1.5, 1.5, 2))
+    
+    Objeto.crearCylinder('Rueda_izq_interior')   
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.mover((0, 0.45, 0.7))
+    Seleccionado.escalar((0.5, 0.07, 0.5)) 
+    
+    Objeto.crearCylinder('Rueda_izq_medio')   
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.mover((0, 0.55, 0.7))
+    Seleccionado.escalar((0.4, 0.08, 0.4)) 
+    
+    Objeto.crearCylinder('Rueda_izq_exterior')   
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.mover((0, 0.65, 0.7))
+    Seleccionado.escalar((0.5, 0.07, 0.5)) 
+    
+    Objeto.crearCylinder('Rueda_der_interior')   
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.mover((0, -0.45, 0.7))
+    Seleccionado.escalar((0.5, 0.07, 0.5)) 
+    
+    Objeto.crearCylinder('Rueda_der_medio')   
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.mover((0, -0.55, 0.7))
+    Seleccionado.escalar((0.4, 0.08, 0.4)) 
+    
+    Objeto.crearCylinder('Rueda_der_exterior')   
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.mover((0, -0.65, 0.7))
+    Seleccionado.escalar((0.5, 0.07, 0.5)) 
+    
 
