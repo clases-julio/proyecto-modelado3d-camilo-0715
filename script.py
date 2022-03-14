@@ -129,32 +129,32 @@ if __name__ == "__main__":
     Seleccionado.mover((0, 0, 0.9))
     Seleccionado.escalar((1.5, 1.5, 1.6))
     
-    Objeto.crearCylinder('Rueda_izq_interior')   
+    Objeto.crearCylinder('RuedaIzqInterior')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, 0.45, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
     
-    Objeto.crearCylinder('Rueda_izq_medio')   
+    Objeto.crearCylinder('RuedaIzqMedio')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, 0.55, 0.7))
     Seleccionado.escalar((0.4, 0.08, 0.4)) 
     
-    Objeto.crearCylinder('Rueda_izq_exterior')   
+    Objeto.crearCylinder('RuedaIzqExterior')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, 0.65, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
     
-    Objeto.crearCylinder('Rueda_der_interior')   
+    Objeto.crearCylinder('RuedaDerInterior')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, -0.45, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
     
-    Objeto.crearCylinder('Rueda_der_medio')   
+    Objeto.crearCylinder('RuedaDerMedio')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, -0.55, 0.7))
     Seleccionado.escalar((0.4, 0.08, 0.4)) 
     
-    Objeto.crearCylinder('Rueda_der_exterior')   
+    Objeto.crearCylinder('RuedaDerExterior')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, -0.65, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
@@ -169,8 +169,9 @@ if __name__ == "__main__":
     Seleccionado.escalar((1.2, 1.9, 1))
     
     
+    #creamos el cuello y la cara
     Objeto.crearEsfera('EsferaCuello')
-    Seleccionado.rotarY(PI / 2)
+  
     Seleccionado.mover((0.2, 0, 2))
     Seleccionado.escalar((0.6, 0.6, 0.6))
     
@@ -181,10 +182,23 @@ if __name__ == "__main__":
     
     seleccionarObjeto('EsferaCuello')
     seleccionarObjeto('CilindroCuello')
-    unirObjetos('cuello')
+    unirObjetos('Cuello')
     
     Objeto.crearCubo('Cara')
     Seleccionado.mover((0.54, 0, 2))
     Seleccionado.escalar((0.3, 1.5, 1.5))
+    
+    #creamos las manos y la bandeja
+    Objeto.crearCubo('ManoIzq')
+    Seleccionado.mover((0.5, 0.25, 1.35))
+    Seleccionado.escalar((2.3, 0.15, 0.15))
+    
+    Objeto.crearCubo('ManoDer')
+    Seleccionado.mover((0.5, -0.25, 1.35))
+    Seleccionado.escalar((2.3, 0.15, 0.15))
+    
+    Objeto.crearCubo('Bandeja')
+    Seleccionado.mover((0.9, 0, 1.4))
+    Seleccionado.escalar((0.8, 1.5, 0.1))
     
 
