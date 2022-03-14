@@ -20,6 +20,16 @@ def borrarObjetos(): # Borrar todos los objetos
     if(len(bpy.data.objects) != 0):
         bpy.ops.object.select_all(action='SELECT')
         bpy.ops.object.delete(use_global=False)
+        
+def unirObjetos(objName):
+    bpy.ops.object.join()
+    Activo.renombrar(objName)
+    
+def deseleccionarObjetos(): 
+    bpy.ops.object.select_all(action='DESELECT')
+
+def seleccionarObjeto(nombreObjeto): # Seleccionar un objeto por su nombre
+    bpy.data.objects[nombreObjeto].select_set(True)
 
 '''****************************************************************'''
 '''Clase para realizar transformaciones sobre objetos seleccionados'''
@@ -156,6 +166,25 @@ if __name__ == "__main__":
     
     Objeto.crearCubo('Torax')
     Seleccionado.mover((0, 0, 1.7))
-    Seleccionado.escalar((1.5, 1.9, 1))
+    Seleccionado.escalar((1.2, 1.9, 1))
+    
+    
+    Objeto.crearEsfera('EsferaCuello')
+    Seleccionado.rotarY(PI / 2)
+    Seleccionado.mover((0.2, 0, 2))
+    Seleccionado.escalar((0.6, 0.6, 0.6))
+    
+    Objeto.crearCylinder('CilindroCuello')
+    Seleccionado.rotarY(PI / 2)
+    Seleccionado.mover((0.3, 0, 2))
+    Seleccionado.escalar((0.08, 0.3, 0.3))
+    
+    seleccionarObjeto('EsferaCuello')
+    seleccionarObjeto('CilindroCuello')
+    unirObjetos('cuello')
+    
+    Objeto.crearCubo('Cara')
+    Seleccionado.mover((0.54, 0, 2))
+    Seleccionado.escalar((0.3, 1.5, 1.5))
     
 
