@@ -30,6 +30,10 @@ def deseleccionarObjetos():
 
 def seleccionarObjeto(nombreObjeto): # Seleccionar un objeto por su nombre
     bpy.data.objects[nombreObjeto].select_set(True)
+        
+#def seleccionarTodosLosObjetos()
+    #for i in bpy.data.objects:
+        #i.select_set(True)
 
 '''****************************************************************'''
 '''Clase para realizar transformaciones sobre objetos seleccionados'''
@@ -125,7 +129,13 @@ if __name__ == "__main__":
     #Activo.escalar((1, 3, 1))
     
     borrarObjetos()
-    Objeto.crearCubo('Cuepro')
+    
+    bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(5, 5, 5),rotation=(-0.5, 1, 0.2))
+     
+    bpy.ops.object.light_add(type='SUN', radius=1, location=(0, 0, 10))
+
+
+    Objeto.crearCubo('Cuerpo')
     Seleccionado.mover((0, 0, 0.9))
     Seleccionado.escalar((1.5, 1.5, 1.6))
     
@@ -144,6 +154,12 @@ if __name__ == "__main__":
     Seleccionado.mover((0, 0.65, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
     
+    seleccionarObjeto('RuedaIzqInterior')
+    seleccionarObjeto('RuedaIzqMedio')
+    seleccionarObjeto('RuedaIzqExterior')
+    
+    unirObjetos('RuedaIzq')
+    
     Objeto.crearCylinder('RuedaDerInterior')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, -0.45, 0.7))
@@ -159,6 +175,12 @@ if __name__ == "__main__":
     Seleccionado.mover((0, -0.65, 0.7))
     Seleccionado.escalar((0.5, 0.07, 0.5)) 
     
+    seleccionarObjeto('RuedaDerInterior')
+    seleccionarObjeto('RuedaDerMedio')
+    seleccionarObjeto('RuedaDerExterior')
+    
+    unirObjetos('RuedaDer')
+    
     
     Objeto.crearCubo('Cintura')
     Seleccionado.mover((0, 0, 1.4))
@@ -167,6 +189,12 @@ if __name__ == "__main__":
     Objeto.crearCubo('Torax')
     Seleccionado.mover((0, 0, 1.7))
     Seleccionado.escalar((1.2, 1.9, 1))
+    
+    seleccionarObjeto('Cuerpo')
+    seleccionarObjeto('Cintura')
+    seleccionarObjeto('Torax')
+    
+    unirObjetos('CuerpoEntero')
     
     
     #creamos el cuello y la cara
@@ -201,4 +229,9 @@ if __name__ == "__main__":
     Seleccionado.mover((0.9, 0, 1.4))
     Seleccionado.escalar((0.8, 1.5, 0.1))
     
+    #seleccionarTodosLosObjetos()
+    #unirObjetos('Robot')
+    
+    
+
 
