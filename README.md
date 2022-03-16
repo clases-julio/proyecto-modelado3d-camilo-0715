@@ -37,3 +37,12 @@ Para el cuello hemos usado un cilindro con una esfera en la extremo al cual irá
 por último faltaría crear las manos las cuales simplemente son unas varillas las cuales tienen al final una bandeja para transportar el plato de los clientes.
 
 El paso final consistirá en darle color a todo el robot para pbetenr el resultado final que vemos en la imagen.
+
+![image_1](https://user-images.githubusercontent.com/78978326/158701721-ea1dcc4e-d8e3-4f3c-9e31-77830ad1d2a7.png)
+
+![image_2](https://user-images.githubusercontent.com/78978326/158701750-6d4cfa5f-6441-4ede-9bc2-2890979f5397.png)
+
+
+![image_3](https://user-images.githubusercontent.com/78978326/158701759-23ec4b0c-bd54-4722-837d-e57733bfde3c.png)
+
+
