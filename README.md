@@ -34,9 +34,11 @@ Una vez terminado el modelado del cuerpo pasamos a realizar el cuello y la cabez
 
 Para el cuello hemos usado un cilindro con una esfera en la extremo al cual irá conectada la cabeza, esta consistirá en una pantallá cuadrada que mostrara una cara amigable al cliente. para dar una idea de como sería he añadido una imagen de una cara como textura a la cabeza
 
-por último faltaría crear las manos las cuales simplemente son unas varillas las cuales tienen al final una bandeja para transportar el plato de los clientes.
+por último faltaría crear las manos las cules consisten en una sucesion de esferas y cilindros alargados que se unen al torax para crear los miembros y las articulaciones terminando en una mano con dos dedos para agarrar, sobre la que reposa la bandeja que le servira a nuestro robot para servir mesas!
 
-El paso final consistirá en darle color a todo el robot para pbetenr el resultado final que vemos en la imagen.
+El paso final consistirá en darle color a todo el robot para obetenr el resultado final que vemos en la imagen.
+
+Para ilustrar un caso real en el que el robot desempeñaria su tarea de camarero, le eh puesto una botellita de jaggermaister encima de la bandeja :)
 
 ![image_1](https://user-images.githubusercontent.com/78978326/158701721-ea1dcc4e-d8e3-4f3c-9e31-77830ad1d2a7.png)
 
