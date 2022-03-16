@@ -32,5 +32,8 @@ Las tres partes del cuerpo se han modelado con cubos cambiando su tamaño, rotac
 
 Una vez terminado el modelado del cuerpo pasamos a realizar el cuello y la cabeza.
 
-Para el cuello hemos usado un cilindro con una esfera en la extremo al cual irá conectada la cabeza, esta consistirá en una pantallá cuadrada que mostrara una cara 
-amigable al cliente. para dar una idea de como sería he añadido una imagen de una cara como textura a la cabeza
+Para el cuello hemos usado un cilindro con una esfera en la extremo al cual irá conectada la cabeza, esta consistirá en una pantallá cuadrada que mostrara una cara amigable al cliente. para dar una idea de como sería he añadido una imagen de una cara como textura a la cabeza
+
+por último faltaría crear las manos las cuales simplemente son unas varillas las cuales tienen al final una bandeja para transportar el plato de los clientes.
+
+El paso final consistirá en darle color a todo el robot para pbetenr el resultado final que vemos en la imagen.
