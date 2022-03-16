@@ -43,7 +43,7 @@ def cambiarcolor(r, g, b,ColorName):
     activeObject.data.materials.append(material)
     bpy.context.object.active_material.diffuse_color = (r , g, b, 1)
     
-def setImageTexture(ImageName,TextureName):
+def setImageTexture(ImagePath,TextureName):
     #activeObject = bpy.context.active_object
     
     image = bpy.ops.image.open(filepath="//cara.jpg", directory="/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/", files=[{"name":"cara.jpg", "name":"cara.jpg"}], show_multiview=False)
@@ -52,16 +52,12 @@ def setImageTexture(ImageName,TextureName):
     mat.use_nodes = True
     bsdf = mat.node_tree.nodes["Principled BSDF"]
     texImage = mat.node_tree.nodes.new('ShaderNodeTexImage')
-    texImage.image = bpy.data.images.load("/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/cara.jpg")
+    texImage.image = bpy.data.images.load(ImagePath)
     mat.node_tree.links.new(bsdf.inputs['Base Color'], texImage.outputs['Color'])
 
     ob = context.view_layer.objects.active
     ob.data.materials.append(mat)
 
-     
-#def seleccionarTodosLosObjetos()
-    #for i in bpy.data.objects:
-        #i.select_set(True)
 
 '''****************************************************************'''
 '''Clase para realizar transformaciones sobre objetos seleccionados'''
@@ -131,42 +127,39 @@ class Objeto:
     def crearCylinder(objName):
         bpy.ops.mesh.primitive_cylinder_add(radius=1, depth=2, enter_editmode=False, location=(0, 0, 0))
         Activo.renombrar(objName)
-
+        
+        
 '''************'''
-''' M  A  I  N '''
+''' FUNCIONES PARA CREAR EL ROBOT '''
 '''************'''
-if __name__ == "__main__":
-    # Creación de un cubo y transformaciones de este:
-    #Objeto.crearCubo('MiCubo')
-    #Seleccionado.mover((0, 1, 2))
-    #Seleccionado.escalar((1, 1, 2))
-    #Seleccionado.escalar((0.5, 1, 1))
-    #Seleccionado.rotarX(3.1415 / 8)
-    #Seleccionado.rotarX(3.1415 / 7)
-    #Seleccionado.rotarZ(3.1415 / 3)
-
-    # Creación de un cono y transformaciones de este:
-    #Objeto.crearCono('MiCono')
-    #Activo.posicionar((-2, -2, 0))
-    #Especifico.escalar('MiCono', (1.5, 2.5, 2))
-
-    # Creación de una esfera y transformaciones de esta:
-    #Objeto.crearEsfera('MiEsfera')
-    #Especifico.posicionar('MiEsfera', (2, 0, 0))
-    #Activo.rotar((0, 0, 3.1415 / 3))
-    #Activo.escalar((1, 3, 1))
+        
+def CrearCuerpo():
+    Objeto.crearCubo('Cintura')
+    Seleccionado.mover((0, 0, 1.4))
+    Seleccionado.escalar((1, 1, 0.5))
     
-    borrarObjetos()
+    Objeto.crearCubo('Torax')
+    Seleccionado.mover((0, 0, 1.7))
+    Seleccionado.escalar((1.2, 1.6, 1))
     
-    bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(5, 5, 5),rotation=(-0.5, 1, 0.2))
-     
-    bpy.ops.object.light_add(type='SUN', radius=1, location=(0, 0, 10))
-
-
+    seleccionarObjeto('Cintura')
+    seleccionarObjeto('Torax')
+    
+    unirObjetos('CuerpoMedio')
+    cambiarcolor(255,255,255, 'ColorCuerpo')
+    
     Objeto.crearCubo('Cuerpo')
     Seleccionado.mover((0, 0, 0.9))
     Seleccionado.escalar((1.5, 1.5, 1.6))
+    Seleccionado.rotarX(PI / 2)
+    setImageTexture("/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/urjc_pequeno.png","textura cuerpo")
     
+
+    
+
+
+def CrearRuedas():
+
     Objeto.crearCylinder('RuedaIzqInterior')   
     Seleccionado.rotarX(PI / 2)
     Seleccionado.mover((0, 0.45, 0.7))
@@ -210,25 +203,9 @@ if __name__ == "__main__":
     
     unirObjetos('RuedaDer')
     cambiarcolor(50,50,50,'ColorRuedaDer')
-    
-    
-    Objeto.crearCubo('Cintura')
-    Seleccionado.mover((0, 0, 1.4))
-    Seleccionado.escalar((1, 1, 0.5))
-    
-    Objeto.crearCubo('Torax')
-    Seleccionado.mover((0, 0, 1.7))
-    Seleccionado.escalar((1.2, 1.9, 1))
-    
-    seleccionarObjeto('Cuerpo')
-    seleccionarObjeto('Cintura')
-    seleccionarObjeto('Torax')
-    
-    unirObjetos('CuerpoEntero')
-    cambiarcolor(255,255,255, 'ColorCuerpo')
-    
-    
-    #creamos el cuello y la cara
+
+
+def CrearCabeza():
     Objeto.crearEsfera('EsferaCuello')
   
     Seleccionado.mover((0.2, 0, 2))
@@ -248,9 +225,10 @@ if __name__ == "__main__":
     Seleccionado.mover((0.54, 0, 2))
     Seleccionado.rotarX(PI / 2)
     Seleccionado.escalar((0.3, 1.5, 1.5))
-    setImageTexture("cara.jpg","textura cara")
+    setImageTexture("/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/cara.jpg","textura cara")
     
-    #creamos las manos y la bandeja
+
+def CrearManos():
     Objeto.crearCubo('ManoIzq')
     Seleccionado.mover((0.5, 0.25, 1.35))
     Seleccionado.escalar((2.3, 0.15, 0.15))
@@ -270,9 +248,34 @@ if __name__ == "__main__":
     Seleccionado.escalar((0.8, 1.5, 0.1))
     cambiarcolor(120,120,120,'ColorBandeja')
     
+
     
-    #seleccionarTodosLosObjetos()
-    #unirObjetos('Robot')
+'''************'''
+''' M  A  I  N '''
+'''************'''
+if __name__ == "__main__":
+    
+    
+    borrarObjetos()
+    
+    bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(5, 5, 5),rotation=(0, 0, 0))
+    bpy.ops.transform.rotate(value=-3.92875, orient_axis='Z', orient_type='LOCAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='LOCAL', constraint_axis=(False, False, True), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)
+    bpy.ops.transform.trackball(value=(1.01, 0.56), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)
+
+    bpy.ops.object.light_add(type='SUN', radius=1, location=(0, 0, 10))
+    
+    #creamos las ruedas
+    CrearRuedas()
+    
+    #creamos el cuerpo
+    CrearCuerpo()
+    
+    #creamos la cabeza
+    CrearCabeza()
+    
+    #creamos las manos
+    CrearManos()
+
     
     
 
