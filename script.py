@@ -137,16 +137,17 @@ def CrearCuerpo():
     Objeto.crearCubo('Cintura')
     Seleccionado.mover((0, 0, 1.4))
     Seleccionado.escalar((1, 1, 0.5))
+    cambiarcolor(50,50,50, 'ColorCintura')
     
     Objeto.crearCubo('Torax')
     Seleccionado.mover((0, 0, 1.7))
     Seleccionado.escalar((1.2, 1.6, 1))
+    cambiarcolor(255,255,255, 'ColorTorax')
     
     seleccionarObjeto('Cintura')
     seleccionarObjeto('Torax')
     
     unirObjetos('CuerpoMedio')
-    cambiarcolor(255,255,255, 'ColorCuerpo')
     
     Objeto.crearCubo('Cuerpo')
     Seleccionado.mover((0, 0, 0.9))
@@ -229,18 +230,99 @@ def CrearCabeza():
     
 
 def CrearManos():
-    Objeto.crearCubo('ManoIzq')
-    Seleccionado.mover((0.5, 0.25, 1.35))
-    Seleccionado.escalar((2.3, 0.15, 0.15))
+    Objeto.crearEsfera('HombroIzq')
+    Seleccionado.mover((0, 0.4, 1.7))
+    Seleccionado.escalar((0.35, 0.35, 0.35))
+    cambiarcolor(50,50,50, 'ColorHombro')
     
-    Objeto.crearCubo('ManoDer')
-    Seleccionado.mover((0.5, -0.25, 1.35))
-    Seleccionado.escalar((2.3, 0.15, 0.15))
+    Objeto.crearCylinder('BrazoIzq')
+    Seleccionado.mover((0.25, 0.5, 1.5))
+    Seleccionado.escalar((0.06, 0.06, 0.35))
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.rotarZ(PI / 2 -0.1)
+    Seleccionado.rotarY(-0.8)
+    cambiarcolor(255,255,255, 'ColorBrazo')
     
-    seleccionarObjeto('ManoIzq')
-    seleccionarObjeto('ManoDer')
-    unirObjetos('Cuello')
-    cambiarcolor(50,50,50,'ColorManos')
+    Objeto.crearEsfera('Codo')
+    Seleccionado.mover((0.5, 0.55, 1.25))
+    Seleccionado.escalar((0.2, 0.2, 0.2))
+    cambiarcolor(50,50,50, 'ColorCuello')
+    
+    Objeto.crearCylinder('BrazoIzq')
+    Seleccionado.mover((0.65, 0.4, 1.28))
+    Seleccionado.escalar((0.05, 0.05, 0.25))
+    Seleccionado.rotarX(PI / 2 + 0.5)
+    Seleccionado.rotarZ(PI / 2 + 1)
+    Seleccionado.rotarY(1)
+    cambiarcolor(255,255,255, 'ColorBrazo')
+    
+    Objeto.crearEsfera('MunezaIzq')
+    Seleccionado.mover((0.83, 0.195, 1.31))
+    Seleccionado.escalar((0.12, 0.12, 0.12))
+    cambiarcolor(50,50,50, 'ColorMuneca')
+    
+    Objeto.crearCubo('DedoIzq1')
+    Seleccionado.mover((0.93, 0.19, 1.35))
+    Seleccionado.escalar((0.25, 0.2, 0.05))
+    
+    Objeto.crearCubo('DedoIzq2')
+    Seleccionado.mover((0.77, 0.195, 1.35))
+    Seleccionado.escalar((0.25, 0.2, 0.05))
+    
+    Objeto.crearCubo('DedoIzq3')
+    Seleccionado.mover((0.85, 0.1, 1.35))
+    Seleccionado.escalar((0.25, 0.2, 0.05))
+    Seleccionado.rotarZ(PI/2)
+    
+    
+    Objeto.crearEsfera('HombroDer')
+    Seleccionado.mover((0, -0.4, 1.7))
+    Seleccionado.escalar((0.35, 0.35, 0.35))
+    cambiarcolor(50,50,50, 'ColorHombro')
+    
+    Objeto.crearCylinder('BrazoDer')
+    Seleccionado.mover((0.25, -0.5, 1.5))
+    Seleccionado.escalar((0.06, 0.06, 0.35))
+    Seleccionado.rotarX(PI / 2)
+    Seleccionado.rotarZ(-PI / 2 +0.1)
+    Seleccionado.rotarY(-0.8)
+    cambiarcolor(255,255,255, 'ColorBrazo')
+    
+    Objeto.crearEsfera('CodoDer')
+    Seleccionado.mover((0.5, -0.55, 1.25))
+    Seleccionado.escalar((0.2, 0.2, 0.2))
+    cambiarcolor(50,50,50, 'ColorCodo')
+    
+    Objeto.crearCylinder('AnteBrazoDer')
+    Seleccionado.mover((0.65, -0.4, 1.28))
+    Seleccionado.escalar((0.05, 0.05, 0.25))
+    Seleccionado.rotarX(-PI / 2 - 0.5)
+    Seleccionado.rotarZ(-PI / 2 - 1)
+    Seleccionado.rotarY(1)
+    cambiarcolor(255,255,255, 'ColorBrazo')
+    
+    Objeto.crearEsfera('MunezaIzq')
+    Seleccionado.mover((0.83, -0.195, 1.31))
+    Seleccionado.escalar((0.12, 0.12, 0.12))
+    cambiarcolor(50,50,50, 'ColorMuneca')
+    
+    Objeto.crearEsfera('MunezaIzq')
+    Seleccionado.mover((0.83, 0.195, 1.31))
+    Seleccionado.escalar((0.12, 0.12, 0.12))
+    cambiarcolor(50,50,50, 'ColorMuneca')
+    
+    Objeto.crearCubo('DedoIzq1')
+    Seleccionado.mover((0.93, -0.19, 1.35))
+    Seleccionado.escalar((0.25, 0.2, 0.05))
+    
+    Objeto.crearCubo('DedoIzq2')
+    Seleccionado.mover((0.77, -0.195, 1.35))
+    Seleccionado.escalar((0.25, 0.2, 0.05))
+    
+    Objeto.crearCubo('DedoIzq3')
+    Seleccionado.mover((0.85, -0.1, 1.35))
+    Seleccionado.escalar((0.25, 0.2, 0.05))
+    Seleccionado.rotarZ(PI/2)
     
     
     Objeto.crearCubo('Bandeja')
@@ -250,6 +332,20 @@ def CrearManos():
     
 
     
+def jaggerbottle():
+    
+    Objeto.crearCubo('BottleBody')
+    Seleccionado.mover((1, 0.2, 1.55))
+    Seleccionado.escalar((0.15, 0.55, 0.4))
+    Seleccionado.rotarX(PI/2)
+    
+    setImageTexture("/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/jaggerSkin.png","texturajagger")
+    
+    Objeto.crearCubo('Pitote')
+    Seleccionado.mover((1, 0.2, 1.6))
+    Seleccionado.escalar((0.1, 0.1, 0.55))
+    cambiarcolor(20,20,20, 'ColorPitote')
+   
 '''************'''
 ''' M  A  I  N '''
 '''************'''
@@ -258,9 +354,7 @@ if __name__ == "__main__":
     
     borrarObjetos()
     
-    bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(5, 5, 5),rotation=(0, 0, 0))
-    bpy.ops.transform.rotate(value=-3.92875, orient_axis='Z', orient_type='LOCAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='LOCAL', constraint_axis=(False, False, True), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)
-    bpy.ops.transform.trackball(value=(1.01, 0.56), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)
+    bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(0, 8, 2),rotation=(PI/2 - 0.08 , 0, PI))
 
     bpy.ops.object.light_add(type='SUN', radius=1, location=(0, 0, 10))
     
@@ -275,6 +369,8 @@ if __name__ == "__main__":
     
     #creamos las manos
     CrearManos()
+    
+    jaggerbottle()
 
     
     
