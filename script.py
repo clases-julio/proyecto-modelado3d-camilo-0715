@@ -1,4 +1,5 @@
 import bpy
+from bpy import context, data, ops
 
 PI = 3.1415
 
@@ -30,7 +31,34 @@ def deseleccionarObjetos():
 
 def seleccionarObjeto(nombreObjeto): # Seleccionar un objeto por su nombre
     bpy.data.objects[nombreObjeto].select_set(True)
-        
+    
+def cambiarcolor(r, g, b,ColorName):
+    
+    r = r/ 255
+    g = g / 255
+    b = b/ 255
+    
+    activeObject = bpy.context.active_object
+    material = bpy.data.materials.new(name=ColorName)
+    activeObject.data.materials.append(material)
+    bpy.context.object.active_material.diffuse_color = (r , g, b, 1)
+    
+def setImageTexture(ImageName,TextureName):
+    #activeObject = bpy.context.active_object
+    
+    image = bpy.ops.image.open(filepath="//cara.jpg", directory="/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/", files=[{"name":"cara.jpg", "name":"cara.jpg"}], show_multiview=False)
+    
+    mat = bpy.data.materials.new(name=TextureName)
+    mat.use_nodes = True
+    bsdf = mat.node_tree.nodes["Principled BSDF"]
+    texImage = mat.node_tree.nodes.new('ShaderNodeTexImage')
+    texImage.image = bpy.data.images.load("/home/alumnos/camilo/Escritorio/universidad/curso3/modelado/blender/proyecto-modelado3d-camilo-0715/cara.jpg")
+    mat.node_tree.links.new(bsdf.inputs['Base Color'], texImage.outputs['Color'])
+
+    ob = context.view_layer.objects.active
+    ob.data.materials.append(mat)
+
+     
 #def seleccionarTodosLosObjetos()
     #for i in bpy.data.objects:
         #i.select_set(True)
@@ -159,6 +187,7 @@ if __name__ == "__main__":
     seleccionarObjeto('RuedaIzqExterior')
     
     unirObjetos('RuedaIzq')
+    cambiarcolor(50,50,50,'ColorRuedaIzq')
     
     Objeto.crearCylinder('RuedaDerInterior')   
     Seleccionado.rotarX(PI / 2)
@@ -180,6 +209,7 @@ if __name__ == "__main__":
     seleccionarObjeto('RuedaDerExterior')
     
     unirObjetos('RuedaDer')
+    cambiarcolor(50,50,50,'ColorRuedaDer')
     
     
     Objeto.crearCubo('Cintura')
@@ -195,6 +225,7 @@ if __name__ == "__main__":
     seleccionarObjeto('Torax')
     
     unirObjetos('CuerpoEntero')
+    cambiarcolor(255,255,255, 'ColorCuerpo')
     
     
     #creamos el cuello y la cara
@@ -211,10 +242,13 @@ if __name__ == "__main__":
     seleccionarObjeto('EsferaCuello')
     seleccionarObjeto('CilindroCuello')
     unirObjetos('Cuello')
+    cambiarcolor(50,50,50, 'ColorCuello')
     
     Objeto.crearCubo('Cara')
     Seleccionado.mover((0.54, 0, 2))
+    Seleccionado.rotarX(PI / 2)
     Seleccionado.escalar((0.3, 1.5, 1.5))
+    setImageTexture("cara.jpg","textura cara")
     
     #creamos las manos y la bandeja
     Objeto.crearCubo('ManoIzq')
@@ -225,9 +259,17 @@ if __name__ == "__main__":
     Seleccionado.mover((0.5, -0.25, 1.35))
     Seleccionado.escalar((2.3, 0.15, 0.15))
     
+    seleccionarObjeto('ManoIzq')
+    seleccionarObjeto('ManoDer')
+    unirObjetos('Cuello')
+    cambiarcolor(50,50,50,'ColorManos')
+    
+    
     Objeto.crearCubo('Bandeja')
     Seleccionado.mover((0.9, 0, 1.4))
     Seleccionado.escalar((0.8, 1.5, 0.1))
+    cambiarcolor(120,120,120,'ColorBandeja')
+    
     
     #seleccionarTodosLosObjetos()
     #unirObjetos('Robot')
